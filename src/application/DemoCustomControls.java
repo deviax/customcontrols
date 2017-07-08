@@ -1,17 +1,29 @@
 package application;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import application.CenteredControl;
+import application.DynamicControl;
+import application.PropertyControl;
+import application.SimpleControl;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class DemoCustomControls extends Application {
+    private List<Region> controls;
+    private StackPane root;
+    int idx = 0;
+
     @Override
     public void start(Stage primaryStage) {
         try {
-            StackPane root = new StackPane();
+            root = new StackPane();
             root.setPadding(new Insets(10));
 
             SimpleControl sctrl = new SimpleControl();
@@ -19,14 +31,16 @@ public class DemoCustomControls extends Application {
             DynamicControl dctrl = new DynamicControl();
             PropertyControl pctrl = new PropertyControl();
 
-            // root.getChildren()
-            // .add(sctrl);
-            // root.getChildren()
-            // .add(cctrl);
-            // root.getChildren()
-            // .add(dctrl);
-            root.getChildren()
-                .add(pctrl);
+            controls = new ArrayList<>();
+
+            controls.add(sctrl);
+            controls.add(cctrl);
+            controls.add(dctrl);
+            controls.add(pctrl);
+
+            root.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+                switchControl();
+            });
 
             root.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
                 pctrl.setTemperature(pctrl.getTemperature() + 1.30);
@@ -47,6 +61,15 @@ public class DemoCustomControls extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void switchControl() {
+
+        root.getChildren()
+            .setAll(controls.get(idx));
+
+        idx++;
+        idx = idx >= controls.size() ? 0 : idx;
     }
 
     public static void main(String[] args) {
