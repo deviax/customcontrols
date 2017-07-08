@@ -1,4 +1,4 @@
-package application;
+package de.deviax.fx.customcontrols;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;

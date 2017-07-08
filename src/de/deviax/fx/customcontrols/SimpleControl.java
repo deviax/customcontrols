@@ -1,4 +1,4 @@
-package application;
+package de.deviax.fx.customcontrols;
 
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;

@@ -1,12 +1,12 @@
-package application;
+package de.deviax.fx.customcontrols;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import application.CenteredControl;
-import application.DynamicControl;
-import application.PropertyControl;
-import application.SimpleControl;
+import de.deviax.fx.customcontrols.CenteredControl;
+import de.deviax.fx.customcontrols.DynamicControl;
+import de.deviax.fx.customcontrols.PropertyControl;
+import de.deviax.fx.customcontrols.SimpleControl;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
